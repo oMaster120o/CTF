@@ -1,1 +1,1 @@
-pico{fake flag}
+picoCTF{fakeflag}

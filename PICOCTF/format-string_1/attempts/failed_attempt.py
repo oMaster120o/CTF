@@ -1,5 +1,5 @@
 """
-This script was an attempt to enumerate all format string indexes, and get the data from flag.txt.
+This script was an attempt to enumerate all format string indexes, and maybe get the data from flag.txt.
 """
 
 

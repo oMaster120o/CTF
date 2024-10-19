@@ -7,4 +7,4 @@ files:
 	@touch secret-menu-item-1.txt secret-menu-item-2.txt flag.txt 
 	@echo "SECRET MENU ITEM1" > secret-menu-item-1.txt
 	@echo "SECRET MENU ITEM2" > secret-menu-item-2.txt
-	@echo "pico{fakeflag}"   > flag.txt
+	@echo "picoCTF{fakeflag}" > flag.txt

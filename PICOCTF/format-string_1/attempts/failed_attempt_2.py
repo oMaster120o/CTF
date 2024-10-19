@@ -30,7 +30,7 @@ for index in range(0, 1100):
         proc.close()
         continue
 
-
+    # these tryes were to check if any of these decodes would find the flag
     try:
         if (str(output.decode("utf-8")).find("pico") != -1) is True:
             print(output.decode("utf-8"))
