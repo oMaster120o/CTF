@@ -1,0 +1,170 @@
+main
+{
+      ┌ 426: sub.main_4011d7 ();
+      │ afv: vars(5:sp[0xc..0x68])
+      │           0x004011d7      55             push rbp
+      │           0x004011d8      4889e5         mov rbp, rsp
+      │           0x004011db      4883ec60       sub rsp, 0x60
+      │           0x004011df      bf08204000     mov edi, str.n1___n1__n2_OR_n2___n1__n2 ; 0x402008 ; "n1 > n1 + n2 OR n2 > n1 + n2 " ; const char *s
+      │           0x004011e4      e847feffff     call sym.imp.puts           ; int puts(const char *s)
+      │           0x004011e9      488b05582e..   mov rax, qword [obj.stdout] ; obj.__TMC_END__
+      │                                                                      ; [0x404048:8]=0
+      │           0x004011f0      4889c7         mov rdi, rax                ; FILE *stream
+      │           0x004011f3      e868feffff     call sym.imp.fflush         ; int fflush(FILE *stream)
+      │           0x004011f8      bf28204000     mov edi, str.What_two_positive_numbers_can_make_this_possible: ; 0x402028 ; "What two positive numbers can make this possibl
+      e: " ; const char *s
+      │           0x004011fd      e82efeffff     call sym.imp.puts           ; int puts(const char *s)
+      │           0x00401202      488b053f2e..   mov rax, qword [obj.stdout] ; obj.__TMC_END__
+      │                                                                      ; [0x404048:8]=0
+      │           0x00401209      4889c7         mov rdi, rax                ; FILE *stream
+      │           0x0040120c      e84ffeffff     call sym.imp.fflush         ; int fflush(FILE *stream)
+      │           0x00401211      488d45ec       lea rax, [first_input]
+      │           0x00401215      4889c6         mov rsi, rax
+      │           0x00401218      bf5b204000     mov edi, 0x40205b           ; '[ @' ; "%d" ; const char *format
+      │           0x0040121d      b800000000     mov eax, 0
+      │           0x00401222      e859feffff     call sym.imp.__isoc99_scanf ; int scanf(const char *format)
+      │           0x00401227      85c0           test eax, eax
+      │       ┌─< 0x00401229      0f844b010000   je 0x40137a
+      │       │   0x0040122f      488d45e8       lea rax, [second_input]
+      │       │   0x00401233      4889c6         mov rsi, rax
+      │       │   0x00401236      bf5b204000     mov edi, 0x40205b           ; '[ @' ; "%d" ; const char *format
+      │       │   0x0040123b      b800000000     mov eax, 0
+      │       │   0x00401240      e83bfeffff     call sym.imp.__isoc99_scanf ; int scanf(const char *format)
+      │       │   0x00401245      85c0           test eax, eax
+      │      ┌──< 0x00401247      0f842d010000   je 0x40137a
+      │      ││   0x0040124d      8b55e8         mov edx, dword [second_input]
+      │      ││   0x00401250      8b45ec         mov eax, dword [first_input]
+      │      ││   0x00401253      89c6           mov esi, eax
+      │      ││   0x00401255      bf5e204000     mov edi, str.You_entered__d_and__d_n ; 0x40205e ; "You entered %d and %d\n" ; const char *format
+      │      ││   0x0040125a      b800000000     mov eax, 0
+      │      ││   0x0040125f      e8dcfdffff     call sym.imp.printf         ; int printf(const char *format)
+      │      ││   0x00401264      488b05dd2d..   mov rax, qword [obj.stdout] ; obj.__TMC_END__
+      │      ││                                                              ; [0x404048:8]=0
+      │      ││   0x0040126b      4889c7         mov rdi, rax                ; FILE *stream
+      │      ││   0x0040126e      e8edfdffff     call sym.imp.fflush         ; int fflush(FILE *stream)
+      │      ││   0x00401273      8b55ec         mov edx, dword [first_input]
+      │      ││   0x00401276      8b45e8         mov eax, dword [second_input]
+      │      ││   0x00401279      01d0           add eax, edx
+      │      ││   0x0040127b      8945fc         mov dword [sum_result], eax
+      │      ││   0x0040127e      8b55e8         mov edx, dword [second_input] ; int64_t arg3
+      │      ││   0x00401281      8b4dec         mov ecx, dword [first_input]
+      │      ││   0x00401284      8b45fc         mov eax, dword [sum_result]
+      │      ││   0x00401287      89ce           mov esi, ecx                ; int64_t arg2
+      │      ││   0x00401289      89c7           mov edi, eax                ; int64_t arg1
+      │      ││   0x0040128b      e8f6feffff     call sub.addIntOvf_401186
+      │      ││   0x00401290      85c0           test eax, eax
+      │     ┌───< 0x00401292      7523           jne 0x4012b7
+      │     │││   0x00401294      bf75204000     mov edi, str.No_overflow    ; 0x402075 ; "No overflow" ; const char *s
+      │     │││   0x00401299      e892fdffff     call sym.imp.puts           ; int puts(const char *s)
+      │     │││   0x0040129e      488b05a32d..   mov rax, qword [obj.stdout] ; obj.__TMC_END__
+      │     │││                                                              ; [0x404048:8]=0
+      │     │││   0x004012a5      4889c7         mov rdi, rax                ; FILE *stream
+      │     │││   0x004012a8      e8b3fdffff     call sym.imp.fflush         ; int fflush(FILE *stream)
+      │     │││   0x004012ad      bf00000000     mov edi, 0                  ; int status
+      │     │││   0x004012b2      e8d9fdffff     call sym.imp.exit           ; void exit(int status)
+      │     │││   ; CODE XREF from sub.main_4011d7 @ 0x401292(x)
+      │     └───> 0x004012b7      8b55e8         mov edx, dword [second_input] ; int64_t arg3
+      │      ││   0x004012ba      8b4dec         mov ecx, dword [first_input]
+      │      ││   0x004012bd      8b45fc         mov eax, dword [sum_result]
+      │      ││   0x004012c0      89ce           mov esi, ecx                ; int64_t arg2
+      │      ││   0x004012c2      89c7           mov edi, eax                ; int64_t arg1
+      │      ││   0x004012c4      e8bdfeffff     call sub.addIntOvf_401186
+      │      ││   0x004012c9      83f8ff         cmp eax, 0xffffffff
+      │     ┌───< 0x004012cc      7519           jne 0x4012e7
+      │     │││   0x004012ce      bf81204000     mov edi, str.You_have_an_integer_overflow ; 0x402081 ; "You have an integer overflow" ; const char *s
+      │     │││   0x004012d3      e858fdffff     call sym.imp.puts           ; int puts(const char *s)
+      │     │││   0x004012d8      488b05692d..   mov rax, qword [obj.stdout] ; obj.__TMC_END__
+      │     │││                                                              ; [0x404048:8]=0
+      │     │││   0x004012df      4889c7         mov rdi, rax                ; FILE *stream
+      │     │││   0x004012e2      e879fdffff     call sym.imp.fflush         ; int fflush(FILE *stream)
+      │     │││   ; CODE XREF from sub.main_4011d7 @ 0x4012cc(x)
+      │     └───> 0x004012e7      8b45ec         mov eax, dword [first_input]
+      │      ││   0x004012ea      85c0           test eax, eax
+      │     ┌───< 0x004012ec      7f0b           jg 0x4012f9
+      │     │││   0x004012ee      8b45e8         mov eax, dword [second_input]
+      │     │││   0x004012f1      85c0           test eax, eax
+      │    ┌────< 0x004012f3      0f8e81000000   jle 0x40137a
+      │    ││││   ; CODE XREF from sub.main_4011d7 @ 0x4012ec(x)
+      │    │└───> 0x004012f9      be9e204000     mov esi, 0x40209e           ; "r" ; const char *mode
+      │    │ ││   0x004012fe      bfa0204000     mov edi, str.flag.txt       ; 0x4020a0 ; "flag.txt" ; const char *filename
+      │    │ ││   0x00401303      e868fdffff     call sym.imp.fopen          ; file*fopen(const char *filename, const char *mode)
+      │    │ ││   0x00401308      488945f0       mov qword [stream], rax
+      │    │ ││   0x0040130c      48837df000     cmp qword [stream], 0
+      │    │┌───< 0x00401311      7523           jne 0x401336
+      │    ││││   0x00401313      bfb0204000     mov edi, str.flag_not_found:_please_run_this_on_the_server ; 0x4020b0 ; "flag not found: please run this on the server" ; co
+      nst char *s
+      │    ││││   0x00401318      e813fdffff     call sym.imp.puts           ; int puts(const char *s)
+      │    ││││   0x0040131d      488b05242d..   mov rax, qword [obj.stdout] ; obj.__TMC_END__
+      │    ││││                                                              ; [0x404048:8]=0
+      │    ││││   0x00401324      4889c7         mov rdi, rax                ; FILE *stream
+      │    ││││   0x00401327      e834fdffff     call sym.imp.fflush         ; int fflush(FILE *stream)
+      │    ││││   0x0040132c      bf00000000     mov edi, 0                  ; int status
+      │    ││││   0x00401331      e85afdffff     call sym.imp.exit           ; void exit(int status)
+      │    ││││   ; CODE XREF from sub.main_4011d7 @ 0x401311(x)
+      │    │└───> 0x00401336      488b55f0       mov rdx, qword [stream]     ; FILE *stream
+      │    │ ││   0x0040133a      488d45a0       lea rax, [s]
+      │    │ ││   0x0040133e      be3b000000     mov esi, 0x3b               ; ';' ; 59 ; int size
+      │    │ ││   0x00401343      4889c7         mov rdi, rax                ; char *s
+      │    │ ││   0x00401346      e805fdffff     call sym.imp.fgets          ; char *fgets(char *s, int size, FILE *stream)
+      │    │ ││   0x0040134b      488d45a0       lea rax, [s]
+      │    │ ││   0x0040134f      4889c6         mov rsi, rax
+      │    │ ││   0x00401352      bfde204000     mov edi, str.YOUR_FLAG_IS:__s_n ; 0x4020de ; "YOUR FLAG IS: %s\n" ; const char *format
+      │    │ ││   0x00401357      b800000000     mov eax, 0
+      │    │ ││   0x0040135c      e8dffcffff     call sym.imp.printf         ; int printf(const char *format)
+      │    │ ││   0x00401361      488b05e02c..   mov rax, qword [obj.stdout] ; obj.__TMC_END__
+      │    │ ││                                                              ; [0x404048:8]=0
+      │    │ ││   0x00401368      4889c7         mov rdi, rax                ; FILE *stream
+      │    │ ││   0x0040136b      e8f0fcffff     call sym.imp.fflush         ; int fflush(FILE *stream)
+      │    │ ││   0x00401370      bf00000000     mov edi, 0                  ; int status
+      │    │ ││   0x00401375      e816fdffff     call sym.imp.exit           ; void exit(int status)
+      │    │ ││   ; CODE XREFS from sub.main_4011d7 @ 0x401229(x), 0x401247(x), 0x4012f3(x)
+      │    └─└└─> 0x0040137a      b800000000     mov eax, 0
+      │           0x0040137f      c9             leave
+      └           0x00401380      c3             ret
+}
+
+
+
+addIntOvf
+{
+              0x00401186      55             push rbp
+              0x00401187      4889e5         mov rbp, rsp
+
+              0x0040118a      897dfc         mov dword [sum_result], edi ; arg1
+              0x0040118d      8975f8         mov dword [first_input], esi ; arg2
+              0x00401190      8955f4         mov dword [second_input], edx ; arg3
+
+              0x00401193      8b55f8         mov edx, dword [first_input]
+              0x00401196      8b45f4         mov eax, dword [second_input]
+              0x00401199      01d0           add eax, edx
+              0x0040119b      8945fc         mov dword [sum_result], eax
+
+              0x0040119e      837df800       cmp dword [first_input], 0
+          ┌─< 0x004011a2      7e13           jle 0x4011b7  ; if(first_input <= 0)
+          │
+          │   0x004011a4      837df400       cmp dword [second_input], 0
+         ┌──< 0x004011a8      7e0d           jle 0x4011b7  ; if(second_input <= 0)
+         ││
+         ││   0x004011aa      837dfc00       cmp dword [sum_result], 0
+        ┌───< 0x004011ae      7907           jns 0x4011b7  ; if(sum_result >= 0)
+        │││
+        │││   0x004011b0      b8ffffffff     mov eax, 0xffffffff         ; -1
+       ┌────< 0x004011b5      eb1e           jmp 0x4011d5
+       ││││
+       │└└└─> 0x004011b7      837df800       cmp dword [first_input], 0
+       │  ┌─< 0x004011bb      7913           jns 0x4011d0  ; if(first_input >= 0)
+       │  │
+       │  │   0x004011bd      837df400       cmp dword [second_input], 0
+       │ ┌──< 0x004011c1      790d           jns 0x4011d0  ; if(second_input >= 0)
+       │ ││
+       │ ││   0x004011c3      837dfc00       cmp dword [sum_result], 0
+       │┌───< 0x004011c7      7e07           jle 0x4011d0  ; if(sum_result <= 0)
+       ││││
+       ││││   0x004011c9      b8ffffffff     mov eax, 0xffffffff         ; -1
+      ┌─────< 0x004011ce      eb05           jmp 0x4011d5
+      │││││
+      ││└└└─> 0x004011d0      b800000000     mov eax, 0
+      ││
+      └└────> 0x004011d5      5d             pop rbp
+              0x004011d6      c3             ret
+}
